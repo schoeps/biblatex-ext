@@ -366,7 +366,21 @@
     \vss
   }%
 }
-
+\newcommand{\extblx@noa@marginmark}{%
+  \strut\vadjust{\extblx@noa@marginmark@do}}
+\newcommand{\extblx@noa@marginmark@do}{%
+  \vbox to 0pt{%
+    \kern-\dimexpr\dp\strutbox+\ht\strutbox\relax
+    \strut
+    \hfill
+    \rlap{\kern1em
+      \ifhyperref
+        {\href{https://doi.org/\thefield{doi}}}
+        {\@firstofone}%
+      {\noasymbol}}
+    \vss
+  }%
+}
 
 \ifbool{extblx@oa@opt@enable}
   {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@auto}
@@ -392,7 +406,9 @@
 
    \newbibmacro*{oamark}{%
      \iffieldundef{bestoaurl}
-       {}
+       {%
+            \iffieldundef{doi}{}{\extblx@noa@marginmark}%
+       }
        {\extblx@oa@marginmark}}
 
    % patch begentry bibmacro

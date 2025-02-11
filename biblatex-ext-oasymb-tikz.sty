@@ -43,8 +43,33 @@
 \newcommand*{\extblx@oasymb@tikz@plos}{%
   \usebox{\extblx@oasymb@tikz@plos@box}}
 
+\newcommand*{\extblx@noasymb@tikz@plos@tikz}{%
+  \begin{tikzpicture}[x=.1pt,y=.1pt]
+    \begin{scope}
+      \clip (06,73) rectangle ++(52,26);
+      \fill[extblx@oasymb@tikz@plos@orange, even odd rule]
+        (32,73) circle[radius=26]
+        (32,73) circle[radius=15];
+    \end{scope}
+    \fill[extblx@oasymb@tikz@plos@orange, even odd rule]
+      (32,32) circle[radius=32]
+      (32,32) circle[radius=21]
+      (32,32) circle[radius= 9];
+    \fill[extblx@oasymb@tikz@plos@orange]
+      (47,47) rectangle ++ (11,26);
+    \fill[extblx@oasymb@tikz@plos@orange]
+      (06,47) rectangle ++ (11,26);
+  \end{tikzpicture}%
+}
+
+\newsavebox{\extblx@noasymb@tikz@plos@box}
+\sbox{\extblx@noasymb@tikz@plos@box}{\extblx@noasymb@tikz@plos@tikz}
+\newcommand*{\extblx@noasymb@tikz@plos}{%
+  \usebox{\extblx@noasymb@tikz@plos@box}}
+
 % PLoS symbols is standard
 \newcommand*{\oasymbol}{\extblx@oasymb@tikz@plos}
+\newcommand*{\noasymbol}{\extblx@noasymb@tikz@plos}
 
 % Open-Acess.net Open Acess symbol
 % redrawn with TikZ from
